@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Microsoft.AspNetCore.OData</Description>
-    <AssemblyTitle>Microsoft.AspNetCore.OData</AssemblyTitle>
+    <Description>Microsoft.AspNetCore.OData.IronBy</Description>
+    <AssemblyTitle>Microsoft.AspNetCore.OData.IronBy</AssemblyTitle>
     <VersionPrefix>6.0.0-alpha1-1708161</VersionPrefix>
     <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
-    <AssemblyName>Microsoft.AspNetCore.OData</AssemblyName>
-    <PackageId>Microsoft.AspNetCore.OData</PackageId>
+    <AssemblyName>Microsoft.AspNetCore.OData.IronBy</AssemblyName>
+    <PackageId>Microsoft.AspNetCore.OData.IronBy</PackageId>
     <Version>6.0.0-alpha1-1708161</Version>
   </PropertyGroup>
 
