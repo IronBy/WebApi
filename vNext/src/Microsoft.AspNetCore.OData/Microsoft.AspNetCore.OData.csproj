@@ -4,10 +4,9 @@
     <Description>Microsoft.AspNetCore.OData</Description>
     <AssemblyTitle>Microsoft.AspNetCore.OData</AssemblyTitle>
     <VersionPrefix>6.0.0-alpha1-1708161</VersionPrefix>
-    <TargetFrameworks>netstandard1.6;net451;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
     <AssemblyName>Microsoft.AspNetCore.OData</AssemblyName>
     <PackageId>Microsoft.AspNetCore.OData</PackageId>
-    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
     <Version>6.0.0-alpha1-1708161</Version>
   </PropertyGroup>
 
