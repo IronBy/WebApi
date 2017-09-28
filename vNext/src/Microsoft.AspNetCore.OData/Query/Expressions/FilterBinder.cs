@@ -64,13 +64,14 @@ namespace Microsoft.AspNetCore.OData.Query.Expressions
             return BindFilterClause(binder, filterClause, filterType);
         }
 
-        internal static LambdaExpression Bind(OrderByClause orderBy, Type elementType, IServiceProvider requestContainer)
+        internal static LambdaExpression Bind(
+            OrderByClause orderBy, Type elementType, IServiceProvider requestContainer)
         {
             Contract.Assert(orderBy != null);
             Contract.Assert(elementType != null);
             Contract.Assert(requestContainer != null);
 
-            FilterBinder binder = requestContainer.GetRequiredService<FilterBinder>();
+            FilterBinder binder = new FilterBinder(requestContainer);
             binder._filterType = elementType;
 
             return BindOrderByClause(binder, orderBy, elementType);

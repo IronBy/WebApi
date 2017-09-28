@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.OData.Common;
 using Microsoft.AspNetCore.OData.Extensions;
 using Microsoft.AspNetCore.OData.Routing;
 using Microsoft.OData.Edm;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.AspNetCore.OData
 {
@@ -25,7 +26,8 @@ namespace Microsoft.AspNetCore.OData
         /// the given <paramref name="elementClrType"/>.</param>
         /// <param name="elementClrType">The CLR type of the element of the collection being queried.</param>
         /// <param name="path">The parsed <see cref="ODataPath"/>.</param>
-        public ODataQueryContext(IEdmModel model, Type elementClrType, ODataPath path)
+        /// <param name="serviceProvider">DI Service Provider <see cref="IServiceProvider"/>.</param>
+        public ODataQueryContext(IEdmModel model, Type elementClrType, ODataPath path, IServiceProvider serviceProvider)
         {
             if (model == null)
             {
@@ -44,10 +46,16 @@ namespace Microsoft.AspNetCore.OData
                 throw Error.Argument("elementClrType", SRResources.ClrTypeNotInModel, elementClrType.FullName);
             }
 
+            if (serviceProvider == null)
+            {
+                throw Error.ArgumentNull("serviceProvider");
+            }
+
             ElementClrType = elementClrType;
             Model = model;
             Path = path;
             NavigationSource = GetNavigationSource(Model, ElementType, path);
+            ServiceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -57,7 +65,8 @@ namespace Microsoft.AspNetCore.OData
         /// <param name="model">The EDM model the given EDM type belongs to.</param>
         /// <param name="elementType">The EDM type of the element of the collection being queried.</param>
         /// <param name="path">The parsed <see cref="ODataPath"/>.</param>
-        public ODataQueryContext(IEdmModel model, IEdmType elementType, ODataPath path)
+        /// <param name="serviceProvider">DI Service Provider <see cref="IServiceProvider"/>.</param>
+        public ODataQueryContext(IEdmModel model, IEdmType elementType, ODataPath path, IServiceProvider serviceProvider)
         {
             if (model == null)
             {
@@ -67,21 +76,16 @@ namespace Microsoft.AspNetCore.OData
             {
                 throw Error.ArgumentNull("elementType");
             }
+            if (serviceProvider == null)
+            {
+                throw Error.ArgumentNull("serviceProvider");
+            }
 
             Model = model;
             ElementType = elementType;
             Path = path;
             NavigationSource = GetNavigationSource(Model, ElementType, path);
-        }
-
-        internal ODataQueryContext(IEdmModel model, Type elementClrType)
-            : this(model, elementClrType, path: null)
-        {
-        }
-
-        internal ODataQueryContext(IEdmModel model, IEdmType elementType)
-            : this(model, elementType, path: null)
-        {
+            ServiceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -108,6 +112,8 @@ namespace Microsoft.AspNetCore.OData
         /// Gets the <see cref="ODataPath"/>.
         /// </summary>
         public ODataPath Path { get; private set; }
+
+        public IServiceProvider ServiceProvider { get; private set; }
 
         private static IEdmNavigationSource GetNavigationSource(IEdmModel model, IEdmType elementType, ODataPath odataPath)
         {

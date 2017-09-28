@@ -48,7 +48,8 @@ namespace Microsoft.AspNetCore.OData
                     var queryContext = new ODataQueryContext(
                         model,
                         elementClrType,
-                        request.ODataFeature().Path);
+                        request.ODataFeature().Path,
+                        request.HttpContext.RequestServices);
 
                     var queryOptions = new ODataQueryOptions(queryContext, request);
 

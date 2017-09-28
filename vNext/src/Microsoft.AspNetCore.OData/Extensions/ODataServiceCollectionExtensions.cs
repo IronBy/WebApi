@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.OData.Abstracts;
 using Microsoft.AspNetCore.OData.Common;
 using Microsoft.AspNetCore.OData.Formatter.Deserialization;
 using Microsoft.AspNetCore.OData.Formatter.Serialization;
+using Microsoft.AspNetCore.OData.Query;
+using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -66,6 +68,9 @@ namespace Microsoft.AspNetCore.OData.Extensions
 
             // Assembly
             services.AddSingleton<IAssemblyProvider, DefaultAssemblyProvider>();
+            
+            // Add global default Query Settings
+            services.AddSingleton<ODataQuerySettings>(new ODataQuerySettings());
 
             // Serializers
             AddDefaultSerializers(services);

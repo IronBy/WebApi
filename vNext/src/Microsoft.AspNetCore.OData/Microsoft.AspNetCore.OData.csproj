@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Description>Microsoft.AspNetCore.OData.IronBy</Description>
     <AssemblyTitle>Microsoft.AspNetCore.OData.IronBy</AssemblyTitle>
-    <VersionPrefix>6.0.0-alpha1-1708161</VersionPrefix>
+    <VersionPrefix>6.0.0-alpha1-1708162</VersionPrefix>
     <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
     <AssemblyName>Microsoft.AspNetCore.OData.IronBy</AssemblyName>
     <PackageId>Microsoft.AspNetCore.OData.IronBy</PackageId>
-    <Version>6.0.0-alpha1-1708161</Version>
+    <Version>6.0.0-alpha1-1708162</Version>
   </PropertyGroup>
 
   <ItemGroup>
